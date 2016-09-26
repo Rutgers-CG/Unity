@@ -6,6 +6,7 @@ public class fullAgent : MonoBehaviour {
 	Transform target;
 	NavMeshAgent agent;
 	private Ray shootRay;
+	public bool isSelected;
 
 	void Awake () {
 		agent = GetComponent<NavMeshAgent>();
@@ -15,10 +16,19 @@ public class fullAgent : MonoBehaviour {
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit hit;
 		if (Input.GetButtonDown ("Fire2")) {
-			if (Physics.Raycast(ray, out hit, 100)) {
-				target = hit.transform;
+			if (Physics.Raycast(ray, out hit, 100) && isSelected) {
 				agent.SetDestination(hit.point);
 				agent.Resume();
+			}
+		}
+		if (Input.GetButtonDown ("Fire1")) {
+			if (Physics.Raycast (ray, out hit, 100)) {
+				if (hit.collider.CompareTag ("Player")) {
+					Renderer rend = GetComponent<Renderer> ();
+					rend.material.shader = Shader.Find ("Stone_Floor");
+					rend.material.SetColor ("_SpecColor", Color.blue);
+					isSelected = true;
+				} 
 			}
 		}
 	}
