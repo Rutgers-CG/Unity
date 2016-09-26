@@ -4,7 +4,6 @@ using System.Collections;
 public class Director : MonoBehaviour {
 
 	GameObject[] players;
-	public RaycastHit target;
 
 	void Start () {
 		players = GameObject.FindGameObjectsWithTag ("Player");
@@ -15,7 +14,12 @@ public class Director : MonoBehaviour {
 		RaycastHit hit;
 		if (Input.GetButtonDown ("Fire2")) {
 			if (Physics.Raycast(ray, out hit, 100)) {
-				target = hit;
+				for (int i = 0; i < players.Length; i++) {
+					GameObject gameObject = players [i];
+					if (gameObject.GetComponent<fullAgent> ().isSelected) {
+						gameObject.GetComponent<fullAgent> ().setHit(hit);
+					}
+				}
 			}
 		}
 		if (Input.GetButtonDown ("Fire1")) {

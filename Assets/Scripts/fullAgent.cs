@@ -3,25 +3,20 @@ using System.Collections;
 
 public class fullAgent : MonoBehaviour {
 
-	RaycastHit hit;
-	RaycastHit hitBeforeSelected;
+	public Vector3 hit;
 	NavMeshAgent agent;
 	private Ray shootRay;
 	public bool isSelected;
-	GameObject director;
 
 	void Awake () {
-		director = GameObject.Find ("EventSystem");
 		agent = GetComponent<NavMeshAgent>();
+		hit = gameObject.transform.position;
 	}
 
 	void Update () {
 		if (isSelected) {
-			hit = director.GetComponent<Director> ().target;
-			if (!hit.Equals(hitBeforeSelected)) {
-				agent.SetDestination (hit.point);
-				agent.Resume ();
-			}
+			agent.SetDestination (hit);
+			agent.Resume ();
 		}
 	}
 
@@ -29,12 +24,15 @@ public class fullAgent : MonoBehaviour {
 		Renderer rend = GetComponent<Renderer> ();
 		rend.material.color = Color.blue;
 		isSelected = true;
-		hitBeforeSelected = director.GetComponent<Director> ().target;
 	}
 
 	public void isNowNotSelected() {
 		Renderer rend = GetComponent<Renderer> ();
 		rend.material.color = Color.white;
 		isSelected = false;
+	}
+
+	public void setHit(RaycastHit givenHit) {
+		hit = givenHit.point;
 	}
 }
