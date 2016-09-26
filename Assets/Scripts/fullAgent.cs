@@ -3,37 +3,38 @@ using System.Collections;
 
 public class fullAgent : MonoBehaviour {
 
-	Transform target;
+	RaycastHit hit;
+	RaycastHit hitBeforeSelected;
 	NavMeshAgent agent;
 	private Ray shootRay;
 	public bool isSelected;
+	GameObject director;
 
 	void Awake () {
+		director = GameObject.Find ("EventSystem");
 		agent = GetComponent<NavMeshAgent>();
 	}
 
 	void Update () {
-		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-		RaycastHit hit;
-		if (Input.GetButtonDown ("Fire2")) {
-			if (Physics.Raycast(ray, out hit, 100) && isSelected) {
-				agent.SetDestination(hit.point);
-				agent.Resume();
+		if (isSelected) {
+			hit = director.GetComponent<Director> ().target;
+			if (!hit.Equals(hitBeforeSelected)) {
+				agent.SetDestination (hit.point);
+				agent.Resume ();
 			}
 		}
-		if (Input.GetButtonDown ("Fire1")) {
-			if (Physics.Raycast (ray, out hit, 100)) {
-				if (hit.collider.CompareTag ("Player")) {
-					Renderer rend = GetComponent<Renderer> ();
-					rend.material.color = Color.blue;
-					isSelected = true;
-				} 
-			}
-		}
-		if (Input.GetButtonDown ("Deselect")) {
-			Renderer rend = GetComponent<Renderer> ();
-			rend.material.color = Color.white;
-			isSelected = false; 
-		}
+	}
+
+	public void isNowSelected() {
+		Renderer rend = GetComponent<Renderer> ();
+		rend.material.color = Color.blue;
+		isSelected = true;
+		hitBeforeSelected = director.GetComponent<Director> ().target;
+	}
+
+	public void isNowNotSelected() {
+		Renderer rend = GetComponent<Renderer> ();
+		rend.material.color = Color.white;
+		isSelected = false;
 	}
 }
