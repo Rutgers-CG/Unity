@@ -25,11 +25,15 @@ public class fullAgent : MonoBehaviour {
 			if (Physics.Raycast (ray, out hit, 100)) {
 				if (hit.collider.CompareTag ("Player")) {
 					Renderer rend = GetComponent<Renderer> ();
-					rend.material.shader = Shader.Find ("Stone_Floor");
-					rend.material.SetColor ("_SpecColor", Color.blue);
+					rend.material.color = Color.blue;
 					isSelected = true;
 				} 
 			}
+		}
+		if (Input.GetButtonDown ("Deselect")) {
+			Renderer rend = GetComponent<Renderer> ();
+			rend.material.color = Color.white;
+			isSelected = false; 
 		}
 	}
 }
