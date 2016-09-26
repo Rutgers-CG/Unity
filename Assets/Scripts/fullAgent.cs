@@ -14,10 +14,8 @@ public class fullAgent : MonoBehaviour {
 	}
 
 	void Update () {
-		if (isSelected) {
-			agent.SetDestination (hit);
-			agent.Resume ();
-		}
+		agent.SetDestination (hit);
+		//agent.Resume ();
 	}
 
 	public void isNowSelected() {
