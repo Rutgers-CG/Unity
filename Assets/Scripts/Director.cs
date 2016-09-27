@@ -28,13 +28,34 @@ public class Director : MonoBehaviour {
 		//used when a player clicks the left mouse button. Does nothing unless the player clicked on a player object in which case it toggles whether that object is selected
 		if (Input.GetButtonDown ("Fire1")) {
 			if (Physics.Raycast (ray, out hit, 100)) {
-				if (hit.collider.CompareTag ("Player")) {
-					if (hit.transform.gameObject.GetComponent<fullAgent> ().getIsSelected()) {
-						hit.transform.gameObject.GetComponent<fullAgent> ().isNowNotSelected ();
-					} else {
-						hit.transform.gameObject.GetComponent<fullAgent> ().isNowSelected ();
-					}
-				} 
+                if (hit.collider.CompareTag("Player"))
+                {
+                    if (hit.transform.gameObject.GetComponent<fullAgent>().getIsSelected())
+                    {
+                        hit.transform.gameObject.GetComponent<fullAgent>().isNowNotSelected();
+                    }
+                    else
+                    {
+                        hit.transform.gameObject.GetComponent<fullAgent>().isNowSelected();
+                    }
+                    GameObject[] navObstacles = GameObject.FindGameObjectsWithTag("NavObstacle");
+                    for (int i = 0; i < navObstacles.Length; i++)
+                    {
+                        navObstacles[i].GetComponent<obstacleScript>().isSelected = false;
+                    }
+                }
+                else if (hit.collider.CompareTag("NavObstacle"))
+                {
+                    hit.transform.gameObject.GetComponent<obstacleScript>().isSelected = true;
+                    GameObject[] navObstacles = GameObject.FindGameObjectsWithTag("NavObstacle");
+                    for (int i = 0; i < navObstacles.Length; i++)
+                    {
+                        if (hit.transform.gameObject != navObstacles[i])
+                        {
+                            navObstacles[i].GetComponent<obstacleScript>().isSelected = false;
+                        }
+                    }
+                } 
 			}
 		}
 		//clears all selected players when delete is hit
