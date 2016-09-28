@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NavCharScript : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class NavCharScript : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            /*
             if (agent != null )
             {
                 if (Input.GetKey(KeyCode.LeftShift))
@@ -23,34 +25,58 @@ public class NavCharScript : MonoBehaviour
                     Camera.main.GetComponent<Director>().clearAgents(); 
                 }      
             }
-                
+            */
+              
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 100))
             {
-                if (Input.GetKey(KeyCode.LeftShift))
+                if (hit.collider.gameObject.GetComponent<NavMeshAgent>() == null)
                 {
-                    if (Input.GetKey(KeyCode.LeftControl))
+                    //List<NavMeshAgent> capsules = new List<NavMeshAgent>();
+                    GameObject[] caps = GameObject.FindGameObjectsWithTag("Capsule");
+                    //foreach (GameObject c in caps)
+                    //{
+                    //    capsules.Add(c.GetComponent<NavMeshAgent>()); 
+                    //}
+
+                    //foreach (NavMeshAgent a in Camera.main.GetComponent<Director>().agents)
+
+                    foreach (GameObject c in caps)
                     {
-                        agent = hit.collider.gameObject.GetComponent<NavMeshAgent>();
-                        //hit.collider.gameObject.GetComponent<Selected>().select = true;
-                        Camera.main.GetComponent<Director>().addAgent();
+                        //a.GetComponent<Selected>().select = true;
+                        if (c.GetComponent<Selected>().select == true)
+                        {
+                            c.GetComponent<NavMeshAgent>().SetDestination(hit.point);
+                        }
+                            
                     }
-                    else
-                    {
-                        agent = hit.collider.gameObject.GetComponent<NavMeshAgent>();
-                        //hit.collider.gameObject.GetComponent<Selected>().select = true;
-                        Camera.main.GetComponent<Director>().clearAgents();
-                        Camera.main.GetComponent<Director>().addAgent();
-                    }
-                    
                 }
-                foreach(NavMeshAgent a in Camera.main.GetComponent<Director>().agents) 
+                else
                 {
-                    a.GetComponent<Selected>().select = true;
-                    a.SetDestination(hit.point);
+                    if (Input.GetKey(KeyCode.LeftShift))
+                    {
+                        if (Input.GetKey(KeyCode.LeftControl))
+                        {
+                            Debug.Log("add");
+                            agent = hit.collider.gameObject.GetComponent<NavMeshAgent>();
+                            agent.GetComponent<Selected>().select = true; 
+                            //hit.collider.gameObject.GetComponent<Selected>().select = true;
+                            Camera.main.GetComponent<Director>().addAgent();
+                        }
+                        else
+                        {
+                            Debug.Log("new");
+                            agent = hit.collider.gameObject.GetComponent<NavMeshAgent>();
+                            //hit.collider.gameObject.GetComponent<Selected>().select = true;
+                            Camera.main.GetComponent<Director>().clearAgents();
+                            Camera.main.GetComponent<Director>().addAgent();
+                        }
+
+                    }
                 }
+                
                 
             }
         }
