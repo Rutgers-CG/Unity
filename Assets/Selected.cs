@@ -15,14 +15,7 @@ public class Selected : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-        if (Camera.main.GetComponent<NavCharScript>().agent != gameObject.GetComponent<NavMeshAgent>())
-        {
-            select = false;
-        }
-        else
-        {
-            select = true; 
-        }
+
 
         if (select == true)
         {

@@ -4,7 +4,7 @@ using System.Collections;
 public class NavCharScript : MonoBehaviour
 {
 
-    NavMeshAgent agent;
+    public NavMeshAgent agent;
     
     void Start()
     {
@@ -15,6 +15,14 @@ public class NavCharScript : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (agent != null )
+            {
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    agent.GetComponentInParent<Selected>().select = false;
+                }      
+            }
+                
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
