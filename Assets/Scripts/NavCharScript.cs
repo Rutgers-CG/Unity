@@ -20,6 +20,7 @@ public class NavCharScript : MonoBehaviour
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
                     agent.GetComponentInParent<Selected>().select = false;
+                    Camera.main.GetComponent<Director>().clearAgents(); 
                 }      
             }
                 
@@ -30,10 +31,27 @@ public class NavCharScript : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
-                    agent = hit.collider.gameObject.GetComponent<NavMeshAgent>();
-                    hit.collider.gameObject.GetComponent<Selected>().select = true; 
+                    if (Input.GetKey(KeyCode.LeftControl))
+                    {
+                        agent = hit.collider.gameObject.GetComponent<NavMeshAgent>();
+                        //hit.collider.gameObject.GetComponent<Selected>().select = true;
+                        Camera.main.GetComponent<Director>().addAgent();
+                    }
+                    else
+                    {
+                        agent = hit.collider.gameObject.GetComponent<NavMeshAgent>();
+                        //hit.collider.gameObject.GetComponent<Selected>().select = true;
+                        Camera.main.GetComponent<Director>().clearAgents();
+                        Camera.main.GetComponent<Director>().addAgent();
+                    }
+                    
                 }
-                agent.SetDestination(hit.point);
+                foreach(NavMeshAgent a in Camera.main.GetComponent<Director>().agents) 
+                {
+                    a.GetComponent<Selected>().select = true;
+                    a.SetDestination(hit.point);
+                }
+                
             }
         }
 
