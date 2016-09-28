@@ -25,7 +25,7 @@ public class Director : MonoBehaviour {
     public void addAgent()
     {
         agents.Add(Camera.main.GetComponent<NavCharScript>().agent);
-        Camera.main.GetComponent<NavCharScript>().agent.GetComponent<Selected>().select = true;
+        //Camera.main.GetComponent<NavCharScript>().agent.GetComponent<Selected>().select = true;
     }
 
     public void clearAgents()
