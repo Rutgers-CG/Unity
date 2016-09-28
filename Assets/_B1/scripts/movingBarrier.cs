@@ -22,7 +22,7 @@ public class movingBarrier : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        float distCovered = (Time.time - startTime) *2.5f;
+        float distCovered = (Time.time - startTime) *1.5f;
         float fracJourney = distCovered / pathLength;
         transform.position = Vector3.Lerp(startPos, endPos, fracJourney);
         if (transform.position == endPos)

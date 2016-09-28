@@ -61,7 +61,8 @@ public class Director : MonoBehaviour {
                             agentInner.GetComponent<NavMeshAgent>().Stop();
                         }
 
-                        if ((agentInner.GetComponent<NavMeshAgent>().destination == agentInner.transform.position) || agentInner.GetComponent<AgentScript>().isStop() || agentOuter.GetComponent<AgentScript>().isStop())
+                        if (((agentInner.GetComponent<NavMeshAgent>().destination == agentInner.transform.position) || agentInner.GetComponent<AgentScript>().isStop() || agentOuter.GetComponent<AgentScript>().isStop())
+                            && ((agentInner.GetComponent<NavMeshAgent>().destination.x - agentInner.transform.position.x) > 10*Mathf.Sin(3.14f/selectedList.Count) && (agentInner.GetComponent<NavMeshAgent>().destination.y - agentInner.transform.position.y) > 10 * Mathf.Sin(3.14f / selectedList.Count)))
                         {
                             agentInner.GetComponent<AgentScript>().makeStop();
                             agentInner.GetComponent<NavMeshAgent>().Stop();
@@ -95,7 +96,7 @@ public class Director : MonoBehaviour {
                     foreach (GameObject barrier in selectedList)
                     {
                         Vector3 position = barrier.transform.position;
-                        position.x--;
+                        position.x++;
                         barrier.transform.position = position;
                     }
                 }
@@ -104,7 +105,7 @@ public class Director : MonoBehaviour {
                     foreach (GameObject barrier in selectedList)
                     {
                         Vector3 position = barrier.transform.position;
-                        position.x++;
+                        position.x--;
                         barrier.transform.position = position;
                     }
                 }
