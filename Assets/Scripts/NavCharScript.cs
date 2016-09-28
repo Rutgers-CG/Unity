@@ -5,10 +5,10 @@ public class NavCharScript : MonoBehaviour
 {
 
     NavMeshAgent agent;
-
+    
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+
     }
 
     void Update()
@@ -20,8 +20,15 @@ public class NavCharScript : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 100))
             {
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    agent = hit.collider.gameObject.GetComponent<NavMeshAgent>();
+                    hit.collider.gameObject.GetComponent<Selected>().select = true; 
+                }
                 agent.SetDestination(hit.point);
             }
         }
+
+
     }
 }
