@@ -16,7 +16,7 @@ public class Director : MonoBehaviour {
 		RaycastHit hit;
 		//used when a player right clicks to give all active agents a target
 		if (Input.GetButtonDown ("Fire2")) {
-			if (Physics.Raycast(ray, out hit, 100)) {//gets the location clicked on and stores it in hit
+			if (Physics.Raycast(ray, out hit)) {//gets the location clicked on and stores it in hit
 				for (int i = 0; i < players.Length; i++) {//iterates through all the players 
 					GameObject gameObject = players [i];
 					if (gameObject.GetComponent<fullAgent> ().getIsSelected()) {
@@ -27,7 +27,7 @@ public class Director : MonoBehaviour {
 		}
 		//used when a player clicks the left mouse button. Does nothing unless the player clicked on a player object in which case it toggles whether that object is selected
 		if (Input.GetButtonDown ("Fire1")) {
-			if (Physics.Raycast (ray, out hit, 100)) {
+			if (Physics.Raycast (ray, out hit)) {
                 if (hit.collider.CompareTag("Player"))
                 {
                     if (hit.transform.gameObject.GetComponent<fullAgent>().getIsSelected())
