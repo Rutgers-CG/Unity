@@ -20,8 +20,9 @@ https://graphics.cs.rutgers.edu/teaching/2016-fall/computer-graphics/groups/16
 
 This game has 6 agents moving around in an environment full of obstacles such as moving walls, stairs, maze etc.
 Select the agent you want to move, by clicking on it with the mouse, and click on the position of the destination 
-you want the agent to move to. You can see that, when multiple agents move, they do not bunch up! They don't 
-collide, avoid obstacles and follow the shortest path to the specified destination.
+you want the agent to move to. You can see that, when multiple agents move, they do not bunch up! They do not collide 
+with each other, avoid obstacles and follow the shortest path to the specified destination. They adapt to dynamic
+obstacles as well.
 
 A video demo of the game is available at:
 <a>https://www.youtube.com/watch?v=Eo4u8OBC82k&index=11&list=PLMrnU9hvxHHWoAq9KBF3Ydhhn82q8_Xgo</a>
