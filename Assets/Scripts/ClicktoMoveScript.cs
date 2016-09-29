@@ -9,6 +9,7 @@ public class ClicktoMoveScript : MonoBehaviour {
 	private Color origColor;
 	private Color highlightColor;
 	private bool isSelected;
+	public DirectorController director;
 
 	// Use this for initialization
 	void Awake () {
@@ -23,11 +24,23 @@ public class ClicktoMoveScript : MonoBehaviour {
 	void Update () {
 		if (isSelected) {
 			if (Input.GetMouseButtonDown (0)) {
+				if (director.beginBrakes == true) {
+					director.beginBrakes = false;
+					director.stoppedAgents.Clear ();
+				}
+				navMeshAgent.Resume ();
 				RaycastHit hit;
 				if (Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hit, 100)) {
 					navMeshAgent.destination = hit.point;
 				}
-			}
+			} else if (Vector3.Distance(transform.position,navMeshAgent.destination) < 1.0f) {
+				if (director.beginBrakes != true) {
+					navMeshAgent.Stop ();
+					director.beginBrakes = true;
+					director.stoppedAgents = new Hashtable ();
+					director.stoppedAgents.Add (gameObject.name, gameObject);
+				}
+			} 
 		}
 	}
 
