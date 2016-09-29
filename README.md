@@ -1,20 +1,22 @@
 # Unity
 General Unity Playground with all needed assets
 
-Group 16
+<b>Group 16<b>
 
-Members:
-Hareesh Ravi
-Cyril Manayath
-Lei Wang
-Zacharias Psarakis
+<i>Members:</i>
 
-Webpage:
+1. Hareesh Ravi
+2. Cyril Manayath
+3. Lei Wang
+4. Zacharias Psarakis
+
+<i>Webpage:</i>
+
 https://graphics.cs.rutgers.edu/teaching/2016-fall/computer-graphics/groups/16
 
-Assignment B1 
+<b><u>Assignment B1</u></b> 
 
-Navigation Basics
+<i>Navigation Basics</i>
 
 This game has 6 agents moving around in an environment full of obstacles such as moving walls, stairs, maze etc.
 Select the agent you want to move, by clicking on it with the mouse, and click on the position of the destination 
