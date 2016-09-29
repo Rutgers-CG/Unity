@@ -1,7 +1,7 @@
 # Unity
 General Unity Playground with all needed assets
 
-<b>Group 16<b>
+<b>Group 16</b>
 
 <i>Members:</i>
 
