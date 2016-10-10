@@ -189,7 +189,7 @@ ModelImporter:
     - serializedVersion: 16
       name: RunBackward_NtrlFaceFwd
       takeName: _25_a_U1_M_P_RunBackward_NtrlFaceFwd__Fb_p0_No_0_PJ_4
-      firstFrame: 210
+      firstFrame: 225
       lastFrame: 260
       wrapMode: 0
       orientationOffsetY: 0
