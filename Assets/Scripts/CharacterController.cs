@@ -14,10 +14,7 @@ public class CharacterController : MonoBehaviour {
         float xForce = Input.GetAxis("Horizontal");
         anim.SetFloat("zForce", zForce);
         anim.SetFloat("xForce", xForce);
-        if(zForce == 0 && xForce!=0)
-        {
-            transform.Rotate(new Vector3(0, xForce * 60 * Time.deltaTime));
-        }
+        
 		if (Input.GetKey(KeyCode.LeftShift))
         {
             anim.SetBool("run", true);
@@ -26,7 +23,19 @@ public class CharacterController : MonoBehaviour {
         {
             anim.SetBool("run", false);
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.LeftControl) && xForce!=0)
+        {
+            anim.SetBool("strafe", true);
+        }
+        else
+        {
+            if (zForce == 0 && xForce != 0)
+            {
+                transform.Rotate(new Vector3(0, xForce * 60 * Time.deltaTime));
+            }
+            anim.SetBool("strafe", false);
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             anim.SetTrigger("Jump");
         }

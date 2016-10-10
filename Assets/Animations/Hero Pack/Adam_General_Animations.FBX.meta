@@ -4666,7 +4666,7 @@ ModelImporter:
       loopTime: 1
       loopBlend: 1
       loopBlendOrientation: 1
-      loopBlendPositionY: 0
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
