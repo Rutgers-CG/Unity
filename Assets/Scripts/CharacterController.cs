@@ -18,7 +18,7 @@ public class CharacterController : MonoBehaviour {
         {
             transform.Rotate(new Vector3(0, xForce * 60 * Time.deltaTime));
         }
-        if (Input.GetKey(KeyCode.LeftShift))
+		if (Input.GetKey(KeyCode.LeftShift))
         {
             anim.SetBool("run", true);
         }
