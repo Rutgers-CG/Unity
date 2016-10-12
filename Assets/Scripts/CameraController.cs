@@ -13,19 +13,21 @@ public class CameraController : MonoBehaviour {
 	void Update () {
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += this.transform.forward * speed * Time.deltaTime;
+			Vector3 newPos = new Vector3(0, 0, this.transform.forward.z * speed * Time.deltaTime);
+			transform.position += newPos;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position -= this.transform.right* speed * Time.deltaTime;
+			transform.position -= this.transform.right* speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position -= this.transform.forward * speed * Time.deltaTime;
+			Vector3 newPos = new Vector3(0, 0, this.transform.forward.z * speed * Time.deltaTime);
+			transform.position -= newPos;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            transform.position += this.transform.right * speed * Time.deltaTime;
+			transform.position += this.transform.right * speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.Space))
         {
@@ -39,11 +41,13 @@ public class CameraController : MonoBehaviour {
         }
         if (Input.GetAxis("Mouse ScrollWheel") > 0f)
         {
-            transform.position += this.transform.forward * speed*15 * Time.deltaTime;
+			Vector3 newPos = new Vector3(0, this.transform.forward.y * speed * 3 * Time.deltaTime, 0);
+			transform.position += newPos;
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
         {
-            transform.position -= this.transform.forward * speed *15 * Time.deltaTime;
+			Vector3 newPos = new Vector3(0, this.transform.forward.y * speed * 3 * Time.deltaTime, 0);
+			transform.position -= newPos;
         }
 
 
