@@ -20,9 +20,9 @@ public class MouseCharacterController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        // monitor the mouse activity, left click on the Goblin will pick the Goblin 
-        // and left click on other place will deselect it
-		if( Input.GetMouseButtonDown(0)){
+        // monitor the mouse activity, right click on the Goblin will pick the Goblin 
+        // and right click on other place will deselect it
+		if( Input.GetMouseButtonDown(1)){
 			//Debug.Log("Mouse is down");
 			RaycastHit hitInfo = new RaycastHit();
 			bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo);
@@ -46,8 +46,8 @@ public class MouseCharacterController : MonoBehaviour {
 			}
 		}
 
-        // monitor the mouse activity, right click to set a target
-        if (Input.GetMouseButtonDown(1)) {
+        // monitor the mouse activity, left click to set a target
+        if (Input.GetMouseButtonDown(0)) {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
