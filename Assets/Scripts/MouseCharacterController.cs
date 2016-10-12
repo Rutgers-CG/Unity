@@ -32,11 +32,7 @@ public class MouseCharacterController : MonoBehaviour {
 				if (hitInfo.transform.gameObject.tag == "Goblin")
 				{
 					Debug.Log ("Goblin selected!");
-					if (isSelected == true) {
-						anim.SetBool ("run", true);
-					} else {
-						isSelected = true;
-					}
+					isSelected = true;
 				} else {
 					Debug.Log ("de selected!");
                     isSelected = false;
@@ -57,10 +53,10 @@ public class MouseCharacterController : MonoBehaviour {
                     target = hit.point;
                     Debug.Log(target);
                     navAgent.SetDestination(target);
-					float zForce = navAgent.desiredVelocity.z;
+					/*float zForce = navAgent.desiredVelocity.z;
 					float xForce = navAgent.desiredVelocity.x;
 					anim.SetFloat("zForce", zForce);
-					anim.SetFloat("xForce", xForce);
+					anim.SetFloat("xForce", xForce);*/
                 }
             }
         }
@@ -79,7 +75,7 @@ public class MouseCharacterController : MonoBehaviour {
         /*float zForce = Input.GetAxis("Vertical");
         float xForce = Input.GetAxis("Horizontal");
         anim.SetFloat("zForce", zForce);
-        anim.SetFloat("xForce", xForce);
+        anim.SetFloat("xForce", xForce);*/
         
 		if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -89,7 +85,7 @@ public class MouseCharacterController : MonoBehaviour {
         {
             anim.SetBool("run", false);
         }
-        if (Input.GetKey(KeyCode.LeftControl) && xForce!=0)
+        /*if (Input.GetKey(KeyCode.LeftControl) && xForce!=0)
         {
             anim.SetBool("strafe", true);
         }
