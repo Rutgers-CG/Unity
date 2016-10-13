@@ -59,7 +59,7 @@ namespace UnityStandardAssets.Cameras
         protected void Update()
         {
 			ThirdPersonCamera ();
-            HandleRotationMovement();
+            //HandleRotationMovement();
             if (m_LockCursor && Input.GetMouseButtonUp(0))
             {
                 Cursor.lockState = m_LockCursor ? CursorLockMode.Locked : CursorLockMode.None;
@@ -79,10 +79,11 @@ namespace UnityStandardAssets.Cameras
 			Vector3 pos;
 			transform.rotation = Target.transform.rotation;
 			pos = Target.transform.position;
-			pos += transform.up * 1.8f;
-			pos += transform.forward * -2.6f;
+			pos += transform.up * 2.8f;
+			pos += transform.forward * -4.6f;
 			pos += transform.right * 0.2f;
 			transform.position = pos;
+			transform.LookAt (Target.transform);
 		}
 
 
@@ -103,7 +104,7 @@ namespace UnityStandardAssets.Cameras
 			float x = 0;
 			float y = 0;
 			float v = 0;
-			if (Input.GetMouseButton (2)) {
+			if (Input.GetMouseButton (1)) {
 				x = CrossPlatformInputManager.GetAxis ("Mouse X");
 				y = 0.5f * CrossPlatformInputManager.GetAxis ("Mouse Y");
 				v = -CrossPlatformInputManager.GetAxis ("Mouse Y");
