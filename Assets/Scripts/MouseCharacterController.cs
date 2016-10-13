@@ -52,6 +52,7 @@ public class MouseCharacterController : MonoBehaviour {
                 {
                     target = hit.point;
                     Debug.Log(target);
+					transform.LookAt (target);
                     navAgent.SetDestination(target);
 					/*float zForce = navAgent.desiredVelocity.z;
 					float xForce = navAgent.desiredVelocity.x;
