@@ -166,11 +166,13 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleRotations: 1
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nDefault bone length found in this file is different
+      form the one found in the source avatar:\n\t'LeftLeg' : position error = 7.696520
+      mm\n\t'LeftFoot' : position error = 15.233778 mm\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 1
@@ -183,8 +185,8 @@ ModelImporter:
     - serializedVersion: 16
       name: WalkJump_ToLeft_R_1
       takeName: _5_B_a_U1_M_P_WalkJump_ToLeft_R_Fb_p0_No_0_1
-      firstFrame: 305
-      lastFrame: 474
+      firstFrame: 351
+      lastFrame: 400
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -207,7 +209,7 @@ ModelImporter:
       transformMask: []
       maskType: 0
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 305
     isReadable: 1
   meshes:
     lODScreenPercentages: []
