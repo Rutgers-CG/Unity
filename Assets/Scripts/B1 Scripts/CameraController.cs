@@ -10,4 +10,14 @@ public class CameraController : MonoBehaviour {
 		transform.Rotate (moveMouse);
 	}
 
+	int speed = 100;
+	void Update(){
+		if (Input.GetAxis ("Mouse ScrollWheel") > 0) {
+			transform.Translate(Vector3.forward * speed * Time.deltaTime);
+		}
+		if (Input.GetAxis ("Mouse ScrollWheel") < 0) {
+			transform.Translate(Vector3.back * speed * Time.deltaTime);
+		}
+	}
+
 }
