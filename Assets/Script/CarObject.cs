@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class CarObject : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public Transform targetObj;
+    // Use this for initialization
+    void Start () {
+        GetComponent<NavMeshAgent>().destination = targetObj.position;
+        GetComponent<Nave>
+    }
 	
 	// Update is called once per frame
 	void Update () {

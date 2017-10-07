@@ -7,6 +7,7 @@ public class CarNavScript : MonoBehaviour {
     public Transform targetObj;
     // Use this for initialization
     void Start () {
+
         GetComponent<UnityEngine.AI.NavMeshAgent>().destination = targetObj.position;
     }
 	
