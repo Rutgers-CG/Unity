@@ -1,0 +1,10 @@
+Youtube Video Link: https://www.youtube.com/watch?v=et4HGasM_n0
+
+1. -describe break mechanism for location occupied by other agents-
+
+2. Create a trigger collider around the agent that detects obstacles whenever one enter the collider. Then create a path around the obstacle via an offset calculated with the distance between the obstacle and the agent.
+
+3. When the carving option is not enabled for a NavMeshAgent, the obstacle becomes little more than a collider. The NavMeshAgents display basic avoidance behavior and may become stuck if they are in an environment filled with NavMeshObstacles. When the carving option is enabled for a NavMeshObstacle, the obstacle carves a hole into the NavMesh. This means the NavMeshAgents are able to recalculate their paths if their path becomes blocked and can find their way through rooms filled with NavMeshObstacles easier. 
+The carve checkbox should be activated for obstacles that will remain static in the environment and unchecked for obstacles that move.
+If all obstacles were carving ...
+If all obstacles weren't carving, agents might become stuck if there are too many obstacles.
