@@ -36,7 +36,7 @@ v2f vert(appdata v)
 	v2f o;
 	float4 s;
 
-	o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
+	o.pos = UnityObjectToClipPos(v.vertex);
 
 	// scroll bump waves
 	float4 temp;
