@@ -52,5 +52,25 @@ public class AgentController : MonoBehaviour
             agent.isStopped = false;
         }
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Agent")
+        {
+            Debug.Log("Agent has entered.");
+            Vector3 offset = (agent.transform.position - other.transform.position) * 5f;
+            agent.transform.position -= offset;
+        }
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Agent")
+        {
+            Debug.Log("Agent has entered.");
+            Vector3 offset = (agent.transform.position - other.transform.position) * 5f;
+            agent.transform.position -= offset;
+        }
+    }
     #endregion
 }
